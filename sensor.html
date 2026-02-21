@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sensor Data | Drainage Cleaning Robot</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
+.navbar{height:60px;background:#0b3c5d;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 20px;}
+.container{display:flex;height:calc(100vh - 60px);}
+.sidebar{width:220px;background:#1c1c1c;color:#fff;padding:20px;}
+.sidebar ul{list-style:none;}
+.sidebar li{padding:10px 0;border-bottom:1px solid #333;}
+.sidebar a{color:#fff;text-decoration:none;}
+.main{flex:1;background:#f4f6f8;padding:30px;}
+
+.sensor-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
+}
+
+.sensor-card{
+  background:#fff;
+  padding:20px;
+  border-radius:10px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  text-align:center;
+}
+
+.value{
+  font-size:28px;
+  font-weight:bold;
+  margin-top:10px;
+}
+
+.safe{color:green;}
+.alert{color:red;}
+.warning{color:orange;}
+</style>
+</head>
+
+<body>
+<div class="navbar">
+  <h2>Drainage Cleaning Robot</h2>
+  <span>📡 Sensor Data</span>
+</div>
+
+<div class="container">
+<div class="sidebar">
+    <ul>
+        <li><a href="home.html">Dashboard</a></li>
+        <li><a href="profile.html">👤 Profile</a></li>
+        <li><a href="settings.html">⚙ Settings</a></li>
+        <li><a href="about.html">ℹ About</a></li>
+        <li><a href="history.html">🕒 History</a></li>
+        <li><a href="robot-status.html">🤖 Robot Status</a></li>
+        <li><a href="battery.html">🔋 Battery Level</a></li>
+        <li><a href="sensor.html">📡 Sensor Data</a></li>
+        <li><a href="camera.html">📷 Live Camera</a></li>
+      </ul>>
+</div>
+
+<div class="main">
+<h1>📡 Live Sensor Monitoring</h1>
+
+<div class="sensor-grid">
+  <div class="sensor-card">
+    <h3>Gas Sensor</h3>
+    <div class="value safe">SAFE</div>
+  </div>
+
+  <div class="sensor-card">
+    <h3>Water Level</h3>
+    <div class="value warning">MEDIUM</div>
+  </div>
+
+  <div class="sensor-card">
+    <h3>Obstacle Detection</h3>
+    <div class="value alert">DETECTED</div>
+  </div>
+</div>
+
+</div>
+</div>
+</body>
+</html>

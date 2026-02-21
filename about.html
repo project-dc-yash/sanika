@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About | Drainage Cleaning Robot</title>
+
+<style>
+/* ===== GLOBAL ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+/* ===== NAVBAR ===== */
+.navbar{
+  height:60px;
+  background:#0b3c5d;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 20px;
+}
+
+.status{
+  color:#00ff88;
+  font-weight:bold;
+}
+
+/* ===== LAYOUT ===== */
+.container{
+  display:flex;
+  height:calc(100vh - 60px);
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar{
+  width:220px;
+  background:#1c1c1c;
+  color:white;
+  padding:20px;
+}
+
+.sidebar h3{
+  margin-bottom:15px;
+}
+
+.sidebar ul{
+  list-style:none;
+}
+
+.sidebar ul li{
+  padding:10px 0;
+  border-bottom:1px solid #333;
+}
+
+.sidebar ul li a{
+  color:white;
+  text-decoration:none;
+  display:block;
+}
+
+.sidebar ul li a:hover{
+  color:#00e5ff;
+  padding-left:5px;
+}
+
+/* ===== MAIN ===== */
+.main{
+  flex:1;
+  background:#f4f6f8;
+  padding:30px;
+  overflow:auto;
+}
+
+.main h1{
+  color:#0b3c5d;
+  margin-bottom:20px;
+}
+
+/* ===== ABOUT CARD ===== */
+.about-card{
+  background:white;
+  padding:20px;
+  margin-bottom:25px;
+  border-radius:10px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.about-card h2{
+  margin-bottom:10px;
+  color:#333;
+}
+
+.about-card p{
+  line-height:1.7;
+  color:#555;
+}
+
+/* ===== STUDENT GRID ===== */
+.student-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.student-card{
+  background:white;
+  border-radius:10px;
+  padding:20px;
+  text-align:center;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.student-card img{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid #0b3c5d;
+  margin-bottom:10px;
+}
+
+.student-card h3{
+  color:#0b3c5d;
+  margin-bottom:5px;
+}
+
+.student-card p{
+  font-size:14px;
+  color:#555;
+  margin:4px 0;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<div class="navbar">
+  <h2>Drainage Cleaning Robot</h2>
+  <span class="status">ℹ About Project</span>
+</div>
+
+<div class="container">
+
+<!-- ===== SIDEBAR ===== -->
+<div class="sidebar">
+  <h3>Dashboard</h3>
+  <ul>
+    <li><a href="home.html">Dashboard</a></li>
+    <li><a href="profile.html">👤 Profile</a></li>
+    <li><a href="settings.html">⚙ Settings</a></li>
+    <li><a href="about.html">ℹ About</a></li>
+    <li><a href="history.html">🕒 History</a></li>
+    <li><a href="robot-status.html">🤖 Robot Status</a></li>
+    <li><a href="battery.html">🔋 Battery Level</a></li>
+    <li><a href="sensor.html">📡 Sensor Data</a></li>
+    <li><a href="camera.html">📷 Live Camera</a></li>
+  </ul>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main">
+
+<h1>ℹ About the Project</h1>
+
+<!-- PROJECT OVERVIEW -->
+<div class="about-card">
+  <h2>📌 Project Overview</h2>
+  <p>
+    The Drainage Cleaning Robot is designed to clean and inspect underground drainage
+    pipelines using motorized mechanisms. The system improves safety by reducing
+    manual cleaning and enables efficient monitoring of drainage conditions.
+  </p>
+</div>
+
+<!-- STUDENT DETAILS -->
+<div class="about-card">
+  <h2>👨‍🎓 Project Team Members</h2>
+
+  <div class="student-grid">
+
+    <!-- STUDENT 1 -->
+    <div class="student-card">
+      <img src="student1.jpg" alt="Student 1">
+      <h3>Student Name 1</h3>
+      <p>Email: student1@gmail.com</p>
+      <p>Mobile: 9876543210</p>
+    </div>
+
+    <!-- STUDENT 2 -->
+    <div class="student-card">
+      <img src="student2.jpg" alt="Student 2">
+      <h3>Student Name 2</h3>
+      <p>Email: student2@gmail.com</p>
+      <p>Mobile: 9876543211</p>
+    </div>
+
+    <!-- STUDENT 3 -->
+    <div class="student-card">
+      <img src="student3.jpg" alt="Student 3">
+      <h3>Student Name 3</h3>
+      <p>Email: student3@gmail.com</p>
+      <p>Mobile: 9876543212</p>
+    </div>
+
+    <!-- STUDENT 4 -->
+    <div class="student-card">
+      <img src="student4.jpg" alt="Student 4">
+      <h3>Student Name 4</h3>
+      <p>Email: student4@gmail.com</p>
+      <p>Mobile: 9876543213</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- CONCLUSION -->
+<div class="about-card">
+  <h2>✅ Conclusion</h2>
+  <p>
+    This project demonstrates the practical application of robotics and automation
+    to solve real-world sanitation challenges by ensuring safer and efficient
+    drainage cleaning operations.
+  </p>
+</div>
+
+</div>
+</div>
+
+</body>
+</html>

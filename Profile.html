@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | Drainage Cleaning Robot</title>
+    <style>
+        /* ===== GENERAL STYLES ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: #0b3c5d;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* ===== LAYOUT CONTAINER ===== */
+        .container {
+            display: flex;
+            min-height: calc(100vh - 60px);
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            width: 260px;
+            background: #1d2731;
+            color: white;
+            padding: 25px 0;
+        }
+
+        .sidebar h3 {
+            padding: 0 25px 15px;
+            font-size: 1.2rem;
+            border-bottom: 1px solid #3282b8;
+            margin-bottom: 10px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li a {
+            display: block;
+            padding: 12px 25px;
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            background: #3282b8;
+            color: white;
+            padding-left: 35px;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main {
+            flex-grow: 1;
+            padding: 40px;
+        }
+
+        .profile-page h1 {
+            margin-bottom: 25px;
+            color: #0b3c5d;
+        }
+
+        /* ===== PROFILE CARD ===== */
+        .profile-card {
+            display: flex;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            padding: 30px;
+            max-width: 800px;
+            gap: 30px;
+        }
+
+        .profile-left {
+            flex: 0 0 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            background: #0b3c5d;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 4px solid #3282b8;
+        }
+
+        .profile-right {
+            flex-grow: 1;
+        }
+
+        .profile-right table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .profile-right td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .profile-right td:first-child {
+            width: 160px;
+            color: #555;
+        }
+
+        /* Status Styling */
+        .online {
+            color: #27ae60;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .online::before {
+            content: "●";
+            font-size: 18px;
+        }
+
+        /* Info Section */
+        .profile-info {
+            margin-top: 30px;
+            background: #ffffff;
+            padding: 25px;
+            border-left: 6px solid #0b3c5d;
+            border-radius: 8px;
+            max-width: 800px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .profile-info h2 {
+            margin-bottom: 15px;
+            color: #0b3c5d;
+            font-size: 1.3rem;
+        }
+
+        .profile-info p {
+            line-height: 1.6;
+            color: #444;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container { flex-direction: column; }
+            .sidebar { width: 100%; }
+            .profile-card { flex-direction: column; align-items: center; text-align: center; }
+        }
+        .avatar{
+            width:120px;
+            height:120px;
+            border-radius:50%;
+            background:#ffffff;
+            border:3px solid #0b3c5d;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            overflow:hidden;
+          }
+          
+          .avatar img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+          }
+          
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <h2>Drainage Cleaning Robot</h2>
+    <span class="status">👤 Profile: Admin</span>
+</div>
+
+<div class="container">
+
+    <div class="sidebar">
+        <h3>Dashboard</h3>
+        <ul>
+            <li><a href="home.html">Dashboard</a></li>
+            <li><a href="profile.html">👤 Profile</a></li>
+            <li><a href="settings.html">⚙ Settings</a></li>
+            <li><a href="about.html">ℹ About</a></li>
+            <li><a href="history.html">🕒 History</a></li>
+            <li><a href="robot-status.html">🤖 Robot Status</a></li>
+            <li><a href="battery.html">🔋 Battery Level</a></li>
+            <li><a href="sensor.html">📡 Sensor Data</a></li>
+            <li><a href="camera.html">📷 Live Camera</a></li>
+          </ul>
+    </div>
+
+    <div class="main profile-page">
+
+        <h1>👤 Operator Profile</h1>
+
+        <div class="profile-card">
+
+            <div class="profile-left">
+                <div class="avatar">
+                  <img src="./IMG/admin logo .jpg" alt="Admin Logo">
+                </div>
+                <p style="margin-top:10px;font-weight:bold;color:#0b3c5d;">
+                  ● Connected
+                </p>
+              </div>
+              
+
+            <div class="profile-right">
+                <table>
+                    <tr>
+                        <td><b>Operator Name</b></td>
+                        <td>:</td>
+                        <td>Admin User</td>
+                    </tr>
+                    <tr>
+                        <td><b>Role</b></td>
+                        <td>:</td>
+                        <td>System Controller</td>
+                    </tr>
+                    <tr>
+                        <td><b>Robot ID</b></td>
+                        <td>:</td>
+                        <td>DR-PI-01</td>
+                    </tr>
+                    <tr>
+                        <td><b>Controller</b></td>
+                        <td>:</td>
+                        <td>Raspberry Pi 4</td>
+                    </tr>
+                    <tr>
+                        <td><b>Camera Module</b></td>
+                        <td>:</td>
+                        <td>Pi Camera V2</td>
+                    </tr>
+                    <tr>
+                        <td><b>Status</b></td>
+                        <td>:</td>
+                        <td><span class="online">ONLINE</span></td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="profile-info">
+            <h2>📌 Project Responsibility</h2>
+            <p>
+                The operator monitors the live camera feed of the drainage cleaning robot,
+                controls movement, observes blockage conditions, and ensures safe cleaning
+                operations inside drainage pipelines using Raspberry Pi-based automation.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

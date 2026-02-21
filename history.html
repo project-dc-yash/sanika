@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensor History - Green-IoT Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #2ecc71;
+            --dark: #1a1a2e;
+            --bg: #f8f9fa;
+        }
+
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; display: flex; }
+
+        /* SIDEBAR (Consistent with your system) */
+        .sidebar { width: 260px; background: var(--dark); color: white; height: 100vh; position: fixed; }
+        .sidebar ul { list-style: none; padding: 0; margin-top: 20px; }
+        .sidebar ul li a { padding: 15px 25px; display: block; color: #adb5bd; text-decoration: none; }
+        .sidebar ul li a.active { background: var(--primary); color: white; border-radius: 0 25px 25px 0; margin-right: 10px; }
+
+        .main-content { flex: 1; margin-left: 260px; padding: 40px; }
+
+        .header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+
+        /* CHART CARDS */
+        .chart-container {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        select {
+            padding: 8px 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            outline: none;
+        }
+
+        .export-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <div style="text-align:center; padding: 20px;">
+            <i class="fas fa-leaf" style="font-size: 2rem; color: var(--primary);"></i>
+            <h3 style="margin-top:10px">GREEN-IOT</h3>
+        </div>
+        <ul>
+            <li><a href="/"><i class="fas fa-th-large"></i> Dashboard</a></li>
+            <li><a href="/robot"><i class="fas fa-robot"></i> Robot Status</a></li>
+            <li><a href="/live"><i class="fas fa-camera"></i> Live View</a></li>
+            <li><a href="#" class="active"><i class="fas fa-history"></i> History</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <div class="header-flex">
+            <h2>Environmental Data History</h2>
+            <div class="filter-bar">
+                <select>
+                    <option>Last 24 Hours</option>
+                    <option>Last 7 Days</option>
+                </select>
+                <button class="export-btn"><i class="fas fa-download"></i> Export CSV</button>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h3><i class="fas fa-thermometer-half" style="color:#ff5722"></i> Climate Trends</h3>
+            <canvas id="climateChart"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <h3><i class="fas fa-seedling" style="color:#795548"></i> Growth Conditions</h3>
+            <canvas id="growthChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Setup Climate Chart (Temp & Humidity)
+        const ctx1 = document.getElementById('climateChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'line',
+            data: {
+                labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', '23:59'],
+                datasets: [{
+                    label: 'Temperature (°C)',
+                    data: [20, 18, 22, 28, 27, 23, 21],
+                    borderColor: '#ff5722',
+                    fill: false,
+                    tension: 0.4
+                }, {
+                    label: 'Humidity (%)',
+                    data: [70, 75, 65, 55, 60, 68, 70],
+                    borderColor: '#2196f3',
+                    fill: false,
+                    tension: 0.4
+                }]
+            }
+        });
+
+        // Setup Growth Chart (Soil & Light)
+        const ctx2 = document.getElementById('growthChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Soil Moisture (%)',
+                    data: [45, 42, 40, 60, 55, 50, 48],
+                    backgroundColor: '#795548'
+                }, {
+                    label: 'Avg Light (Lux/10)',
+                    data: [80, 85, 30, 90, 88, 75, 82],
+                    backgroundColor: '#ffc107'
+                }]
+            }
+        });
+    </script>
+</body>
+</html>

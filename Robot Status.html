@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robot Status - Green-IoT Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2ecc71;
+            --dark: #1a1a2e;
+            --danger: #e74c3c;
+            --warning: #f1c40f;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #eef2f3;
+            margin: 0;
+            display: flex;
+        }
+
+        /* Using the same sidebar styles as your main dashboard */
+        .sidebar { width: 260px; background: var(--dark); color: white; height: 100vh; padding-top: 20px; }
+        .sidebar ul { list-style: none; padding: 0; }
+        .sidebar ul li a { padding: 15px 25px; display: block; color: #adb5bd; text-decoration: none; }
+        .sidebar ul li a.active { background: var(--primary); color: white; }
+
+        .main-content { flex: 1; padding: 30px; }
+        
+        /* ROBOT CARDS */
+        .status-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .robot-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .robot-card h3 { border-bottom: 2px solid #f4f7f6; padding-bottom: 10px; margin-bottom: 20px; color: #333; }
+
+        /* Progress Bar Styles */
+        .progress-label { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.9rem; font-weight: bold; }
+        .progress-bg { background: #eee; height: 10px; border-radius: 5px; margin-bottom: 20px; }
+        .progress-fill { height: 100%; border-radius: 5px; transition: width 0.5s; }
+
+        /* Status Indicators */
+        .indicator { display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px; }
+        .dot { height: 12px; width: 12px; border-radius: 50%; display: inline-block; margin-right: 10px; }
+        .online { background: var(--primary); box-shadow: 0 0 10px var(--primary); }
+        .offline { background: var(--danger); }
+
+        .btn-refresh {
+            background: var(--dark); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; float: right;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <div style="text-align:center; padding: 20px;">
+            <i class="fas fa-leaf" style="font-size: 2rem; color: var(--primary);"></i>
+            <h3>GREEN-IOT</h3>
+        </div>
+        <ul>
+            <li><a href="/"><i class="fas fa-th-large"></i> Dashboard</a></li>
+            <li><a href="#" class="active"><i class="fas fa-robot"></i> Robot Status</a></li>
+            <li><a href="#"><i class="fas fa-camera"></i> Live View</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+            <h2>System Health & Robot Diagnostics</h2>
+            <button class="btn-refresh" onclick="location.reload()"><i class="fas fa-sync"></i> Refresh System</button>
+        </div>
+
+        <div class="status-container">
+            <div class="robot-card">
+                <h3><i class="fas fa-microchip"></i> Processor (RPi)</h3>
+                
+                <div class="progress-label"><span>CPU Usage</span><span>32%</span></div>
+                <div class="progress-bg"><div class="progress-fill" style="width: 32%; background: var(--primary);"></div></div>
+
+                <div class="progress-label"><span>RAM Usage</span><span>450MB / 2GB</span></div>
+                <div class="progress-bg"><div class="progress-fill" style="width: 22%; background: var(--primary);"></div></div>
+
+                <div class="progress-label"><span>Core Temperature</span><span>48°C</span></div>
+                <div class="progress-bg"><div class="progress-fill" style="width: 48%; background: var(--warning);"></div></div>
+            </div>
+
+            <div class="robot-card">
+                <h3><i class="fas fa-bolt"></i> Component Status</h3>
+                
+                <div class="indicator">
+                    <span>Ventilation Fan</span>
+                    <span><span class="dot online"></span> ACTIVE</span>
+                </div>
+                <div class="indicator">
+                    <span>Water Pump (Relay 1)</span>
+                    <span><span class="dot offline"></span> STANDBY</span>
+                </div>
+                <div class="indicator">
+                    <span>LED Grow Lights</span>
+                    <span><span class="dot online"></span> ON (AUTO)</span>
+                </div>
+                <div class="indicator">
+                    <span>Power Supply (5V)</span>
+                    <span style="color: var(--primary); font-weight: bold;">STABLE</span>
+                </div>
+            </div>
+
+            <div class="robot-card">
+                <h3><i class="fas fa-network-wired"></i> Connection</h3>
+                <p><strong>IP Address:</strong> 192.168.1.45</p>
+                <p><strong>Uptime:</strong> 14 Hours, 22 Mins</p>
+                <p><strong>Signal Strength:</strong> -54 dBm (Excellent)</p>
+                <div style="text-align: center; margin-top: 20px;">
+                    <i class="fas fa-wifi" style="font-size: 3rem; color: var(--primary);"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

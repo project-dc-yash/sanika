@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live View - Green-IoT Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2ecc71;
+            --dark: #0f0f1a;
+            --overlay: rgba(0, 0, 0, 0.6);
+            --accent: #00e5ff;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #121212; /* Dark theme for video focus */
+            margin: 0;
+            display: flex;
+            color: white;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* SIDEBAR (Matches your other pages) */
+        .sidebar { width: 260px; background: #1a1a2e; height: 100vh; }
+        .sidebar ul { list-style: none; padding: 0; margin-top: 20px;}
+        .sidebar ul li a { padding: 15px 25px; display: block; color: #adb5bd; text-decoration: none; transition: 0.3s; }
+        .sidebar ul li a.active { background: var(--primary); color: white; border-radius: 0 25px 25px 0; margin-right: 10px; }
+
+        .main-content { flex: 1; display: flex; flex-direction: column; padding: 20px; }
+
+        /* LIVE VIDEO CONTAINER */
+        .video-wrapper {
+            position: relative;
+            flex: 1;
+            background: #000;
+            border-radius: 20px;
+            border: 2px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+
+        .video-feed {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* CCTV OVERLAY ELEMENTS */
+        .cam-ui {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            pointer-events: none;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .rec-indicator {
+            color: #ff4b2b;
+            font-weight: bold;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink { 50% { opacity: 0; } }
+
+        .cam-meta { font-family: 'Courier New', monospace; color: var(--accent); text-shadow: 2px 2px 4px black; }
+
+        /* CAMERA CONTROLS BAR */
+        .camera-tools {
+            height: 80px;
+            background: #1a1a2e;
+            margin-top: 20px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 0 30px;
+        }
+
+        .tool-btn {
+            background: #2a2a3e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .tool-btn:hover { background: var(--primary); }
+        .tool-btn i { margin-right: 8px; }
+
+        .zoom-slider { width: 150px; cursor: pointer; accent-color: var(--primary); }
+
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <div style="text-align:center; padding: 20px;">
+            <i class="fas fa-leaf" style="font-size: 2rem; color: var(--primary);"></i>
+            <h3 style="color:white; margin-top:10px">GREEN-IOT</h3>
+        </div>
+        <ul>
+            <li><a href="/"><i class="fas fa-th-large"></i> Dashboard</a></li>
+            <li><a href="/robot"><i class="fas fa-robot"></i> Robot Status</a></li>
+            <li><a href="#" class="active"><i class="fas fa-camera"></i> Live View</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <div class="video-wrapper">
+            <img src="/video_feed" class="video-feed" alt="Live Greenhouse Stream">
+            
+            <div class="cam-ui">
+                <div style="display:flex; justify-content: space-between;">
+                    <div class="cam-meta">
+                        <span class="rec-indicator">● REC</span> [GH_STATION_01]
+                    </div>
+                    <div class="cam-meta" id="live-clock">00:00:00</div>
+                </div>
+                <div style="display:flex; justify-content: space-between; align-items: flex-end;">
+                    <div class="cam-meta">ISO 400 | 60 FPS | 1080p</div>
+                    <div class="cam-meta">TEMP: 24°C | HUM: 65%</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="camera-tools">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <label class="cam-meta">ZOOM</label>
+                <input type="range" class="zoom-slider" min="1" max="3" step="0.1" value="1">
+            </div>
+            
+            <button class="tool-btn" onclick="capturePhoto()"><i class="fas fa-camera"></i> SNAPSHOT</button>
+            <button class="tool-btn"><i class="fas fa-moon"></i> NIGHT VISION</button>
+            <button class="tool-btn" style="background: #e74c3c;"><i class="fas fa-stop-circle"></i> STOP STREAM</button>
+        </div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            document.getElementById('live-clock').innerText = now.toLocaleTimeString();
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        function capturePhoto() {
+            alert("Snapshot saved to /home/pi/greenhouse/snapshots/");
+        }
+    </script>
+</body>
+</html>
